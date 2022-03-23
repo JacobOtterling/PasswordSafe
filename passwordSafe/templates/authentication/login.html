@@ -1,0 +1,59 @@
+{% extends 'base_auth.html' %}
+{% load static %}
+
+{% block content %}
+<style> 
+    small{
+        cursor: pointer;
+    }
+</style>
+
+<div class='card'>
+    <div class='card-body'>
+        <h1> PassWordSafe </h1>
+    </div>
+</div>
+
+<div class='row mt-5'> 
+    <div class='col-md-4'></div>
+    <div class='col-md-4'>
+        <div class='card mt-5'>
+            <div class='card-body'>
+                <div class='card-title my-3 text-center'>
+                    <h4> Login to your account</h4>
+                </div>
+                <form action='{% url 'login' %}'method='post'>
+                    {% csrf_token %}
+                    {% include 'partials/messages.html' %}
+                    <div class='form-group'> 
+                        <input type='text' 
+                        class='form-control form-control-sm' 
+                        name='username' 
+                        id='usernameField' 
+                        placeholder='Username' 
+                        /> 
+                    </div>
+                    <p class='text-sm text-success usernameCheck'></p>
+
+                    <div class='form-group my-2'> 
+                        <input type='password' 
+                        class='form-control form-control-sm' 
+                        name='password' 
+                        id='passwordField' 
+                        placeholder='Password'
+                        /> 
+                    </div>
+                    <div> <small class='py-1 showPassword' >SHOW</small></div>
+                    <input type='submit' value='Login' class='btn btn-info my-2 submit-btn' />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-4'></div>
+</div>
+
+<script src='{% static 'javascript/login.js' %}'></script>  <!-- load the js file -->
+
+
+
+{% endblock %}
